@@ -101,13 +101,13 @@ function diffDifficile() {
 function clickCella() {
   for (i=0; i<cella.length; i++) {
     cella[i].addEventListener("click", function(){
-      if (bombeArr.includes(i)) {
+      if (bombeArr.includes(parseInt(this.innerHTML))) {
         this.classList.add("rosso");
-        console.log(this);
+        console.log(this.innerHTML);
       }
       else {
         this.classList.add("azzurro");
-        console.log(this);
+        console.log(this.innerHTML);
       }
     });
   }

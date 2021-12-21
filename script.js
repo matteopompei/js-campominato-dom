@@ -102,6 +102,7 @@ function clickCella() {
   for (let i=0; i<cella.length; i++) {
     cella[i].addEventListener("click", function(){
       if (bombeArr.includes(parseInt(this.innerHTML))) {
+        document.getElementById("gameover").classList.add("neon-gameover");
         for (let check=0; check<100; check++) {
           if (bombeArr.includes(parseInt(cella[check].innerHTML))) {
             cella[check].classList.add("rosso");

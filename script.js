@@ -49,7 +49,7 @@ function diffFacile() {
     bomba = Math.floor((Math.random() * caselle) + 1);
     controlloDoppione()
   }
-  console.log(bombeArr.sort(function(a, b){return a-b}));
+  cheats();
 
   // Evento al click
   clickCella();
@@ -74,7 +74,7 @@ function diffMedio() {
     bomba = Math.floor((Math.random() * caselle) + 1);
     controlloDoppione()
   }
-  console.log(bombeArr.sort(function(a, b){return a-b}));
+  cheats();
 
   // Evento al click
   clickCella();
@@ -99,7 +99,7 @@ function diffDifficile() {
     bomba = Math.floor((Math.random() * caselle) + 1);
     controlloDoppione()
   }
-  console.log(bombeArr.sort(function(a, b){return a-b}));
+  cheats()
 
   // Evento al click
   clickCella();
@@ -111,10 +111,11 @@ function clickCella() {
     cella[i].addEventListener("click", function(){
       if (bombeArr.includes(parseInt(this.innerHTML))) {
         document.getElementById("gameover").classList.add("block");
-        document.getElementById("gameover").classList.add("neon-perso");
+        document.getElementById("gameover").classList.add("neon");
         document.getElementById("perso").classList.add("visible");
         document.getElementById("score").innerHTML += score;
         document.getElementsByTagName("body")[0].classList.add("esplosione");
+        document.getElementsByTagName("header")[0].classList.add("header-hidden");
         for (let check=0; check<caselle; check++) {
           if (bombeArr.includes(parseInt(cella[check].innerHTML))) {
             cella[check].classList.add("rosso");
@@ -126,8 +127,10 @@ function clickCella() {
         this.classList.add("azzurro");
         if (score == maxScore) {
           document.getElementById("gameover").classList.add("block");
-          document.getElementById("gameover").classList.add("neon-vinto");
           document.getElementById("vinto").classList.add("visible");
+          document.getElementsByTagName("body")[0].classList.add("disinnesco");
+          document.getElementsByTagName("header")[0].classList.add("header-hidden");
+          document.querySelectorAll(".celle").classList.add("celle-trasp");
         }
       }
     });
@@ -150,4 +153,10 @@ function controlloDoppione() {
 // Ricarica pagina quando perdi
 function ricarica() {
   location.reload();
+}
+
+// Stampa array bombe (ordinato)
+function cheats() {
+  console.log("Hey, se stai leggendo qui stai chettando!");
+  console.log(bombeArr.sort(function(a, b){return a-b}));
 }

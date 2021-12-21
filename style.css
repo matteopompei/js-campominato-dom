@@ -174,3 +174,11 @@ button:active {
 .azzurro:hover {
   background-color: #737dff;
 }
+
+.rosso {
+  background-color: #d40000;
+}
+
+.rosso:hover {
+  background-color: #a00000;
+}

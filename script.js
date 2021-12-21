@@ -29,16 +29,18 @@ document.getElementById("medio").addEventListener("click", diffMedio);
 document.getElementById("difficile").addEventListener("click", diffDifficile);
 
 // Funzioni
+
+// Genera griglia a difficoltà facile
 function diffFacile() {
   diffSet.classList.add("hidden");
   griglia.innerHTML = "";
   griglia.classList.remove("animazione", "medio", "difficile");
   griglia.classList.add("animazione", "facile");
+
   for (i=1; i<caselleFacile+1; i++) {
     griglia.innerHTML += `<div class="cella">${i}</div>`;
   }
-  cellaAzzurra();
-
+  
   // Genera bombe difficoltà facile
   bombeArr = [];
   while (bombeArr.length < 16) {
@@ -46,8 +48,12 @@ function diffFacile() {
     controlloDoppione()
   }
   console.log(bombeArr);
+
+  // Evento al click
+  clickCella();
 }
 
+// Genera griglia a difficoltà medio
 function diffMedio() {
   diffSet.classList.add("hidden");
   griglia.innerHTML = "";
@@ -56,7 +62,6 @@ function diffMedio() {
   for (i=1; i<82; i++) {
     griglia.innerHTML += `<div class="cella">${i}</div>`;
   }
-  cellaAzzurra();
 
   // Genera bombe difficoltà media
   bombeArr = [];
@@ -65,8 +70,12 @@ function diffMedio() {
     controlloDoppione()
   }
   console.log(bombeArr);
+
+  // Evento al click
+  clickCella();
 }
 
+// Genera griglia a difficoltà difficile
 function diffDifficile() {
   diffSet.classList.add("hidden");
   griglia.innerHTML = "";
@@ -75,7 +84,6 @@ function diffDifficile() {
   for (i=1; i<50; i++) {
     griglia.innerHTML += `<div class="cella">${i}</div>`;
   }
-  cellaAzzurra();
 
   // Genera bombe difficoltà difficile
   bombeArr = [];
@@ -84,13 +92,23 @@ function diffDifficile() {
     controlloDoppione()
   }
   console.log(bombeArr);
+
+  // Evento al click
+  clickCella();
 }
 
 // Click sulla cella
-function cellaAzzurra() {
+function clickCella() {
   for (i=0; i<cella.length; i++) {
     cella[i].addEventListener("click", function(){
-      this.classList.add("azzurro");
+      if (bombeArr.includes(i)) {
+        this.classList.add("rosso");
+        console.log(this);
+      }
+      else {
+        this.classList.add("azzurro");
+        console.log(this);
+      }
     });
   }
 }

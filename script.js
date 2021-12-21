@@ -22,6 +22,7 @@ let bomba = 0;
 const caselleFacile = 100;
 const caselleMedio = 81;
 const caselleDifficile = 49;
+let score = 0;
 
 // Selezioni difficoltà
 document.getElementById("facile").addEventListener("click", diffFacile);
@@ -103,6 +104,7 @@ function clickCella() {
     cella[i].addEventListener("click", function(){
       if (bombeArr.includes(parseInt(this.innerHTML))) {
         document.getElementById("gameover").classList.add("neon-gameover");
+        document.getElementById("score").innerHTML += score;
         for (let check=0; check<100; check++) {
           if (bombeArr.includes(parseInt(cella[check].innerHTML))) {
             cella[check].classList.add("rosso");
@@ -111,6 +113,7 @@ function clickCella() {
         console.log(this.innerHTML);
       }
       else {
+        score++;
         this.classList.add("azzurro");
         console.log(this.innerHTML);
       }

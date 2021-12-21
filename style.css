@@ -186,26 +186,29 @@ button:active {
 
 /* Game Over */
 #gameover {
-  position: fixed;
   display: none;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100vw;
   height: calc(100vh - 200px);
-  box-shadow: inset 0 0 150px rgba(255, 0, 0, 1);
-  z-index: 9999;
+  z-index: 999;
 }
 
-.neon-gameover {
+.block {
   display: block !important;
 }
 
-#riprova {
+.visible {
+  visibility: visible !important;
+}
+
+.banner {
+  visibility: hidden;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: #ff0000;
   padding: 50px 15px;
   display: flex;
   justify-content: space-around;
@@ -214,13 +217,31 @@ button:active {
   font-weight: bold;
 }
 
+/* Perso */
+#perso {
+  background-color: #ff0000;
+}
+
+.neon-perso {
+  box-shadow: inset 0 0 150px #ff0000;
+}
+
 .esplosione {
   background-image: url("esplosione.gif");
   background-size: cover;
 }
 
+/* Vinto */
+#vinto {
+  background-color: #6c5cff;
+}
+
+.neon-vinto {
+  box-shadow: inset 0 0 150px #6c5cff;
+}
+
 /* Punteggio */
-#riprova > div > div {
+#gameover div > div > div {
   font-size: 2rem;
 }
 

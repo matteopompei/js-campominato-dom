@@ -19,10 +19,9 @@ let cella = document.getElementsByClassName("cella");
 const diffSet = document.getElementById("select");
 let bombeArr = [];
 let bomba = 0;
-const caselleFacile = 100;
-const caselleMedio = 81;
-const caselleDifficile = 49;
+let caselle = 0;
 let score = 0;
+let maxScore = 0;
 
 // Selezioni difficoltà
 document.getElementById("facile").addEventListener("click", diffFacile);
@@ -37,18 +36,20 @@ function diffFacile() {
   griglia.innerHTML = "";
   griglia.classList.remove("animazione", "medio", "difficile");
   griglia.classList.add("animazione", "facile");
+  caselle = 100;
+  maxScore = caselle - 16;
 
-  for (let i=1; i<caselleFacile+1; i++) {
+  for (let i=1; i<caselle+1; i++) {
     griglia.innerHTML += `<div class="cella">${i}</div>`;
   }
   
   // Genera bombe difficoltà facile
   bombeArr = [];
   while (bombeArr.length < 16) {
-    bomba = Math.floor((Math.random() * caselleFacile) + 1);
+    bomba = Math.floor((Math.random() * caselle) + 1);
     controlloDoppione()
   }
-  console.log(bombeArr);
+  console.log(bombeArr.sort(function(a, b){return a-b}));
 
   // Evento al click
   clickCella();
@@ -60,17 +61,20 @@ function diffMedio() {
   griglia.innerHTML = "";
   griglia.classList.remove("animazione", "facile", "difficile");
   griglia.classList.add("animazione", "medio");
-  for (let i=1; i<82; i++) {
+  caselle = 81;
+  maxScore = caselle - 16;
+
+  for (let i=1; i<caselle+1; i++) {
     griglia.innerHTML += `<div class="cella">${i}</div>`;
   }
 
   // Genera bombe difficoltà media
   bombeArr = [];
   while (bombeArr.length < 16) {
-    bomba = Math.floor((Math.random() * caselleMedio) + 1);
+    bomba = Math.floor((Math.random() * caselle) + 1);
     controlloDoppione()
   }
-  console.log(bombeArr);
+  console.log(bombeArr.sort(function(a, b){return a-b}));
 
   // Evento al click
   clickCella();
@@ -82,17 +86,20 @@ function diffDifficile() {
   griglia.innerHTML = "";
   griglia.classList.remove("animazione", "facile", "medio");
   griglia.classList.add("animazione", "difficile");
-  for (let i=1; i<50; i++) {
+  caselle = 49;
+  maxScore = caselle - 16;
+
+  for (let i=1; i<caselle+1; i++) {
     griglia.innerHTML += `<div class="cella">${i}</div>`;
   }
 
   // Genera bombe difficoltà difficile
   bombeArr = [];
   while (bombeArr.length < 16) {
-    bomba = Math.floor((Math.random() * caselleDifficile) + 1);
+    bomba = Math.floor((Math.random() * caselle) + 1);
     controlloDoppione()
   }
-  console.log(bombeArr);
+  console.log(bombeArr.sort(function(a, b){return a-b}));
 
   // Evento al click
   clickCella();
@@ -103,20 +110,25 @@ function clickCella() {
   for (let i=0; i<cella.length; i++) {
     cella[i].addEventListener("click", function(){
       if (bombeArr.includes(parseInt(this.innerHTML))) {
-        document.getElementById("gameover").classList.add("neon-gameover");
+        document.getElementById("gameover").classList.add("block");
+        document.getElementById("gameover").classList.add("neon-perso");
+        document.getElementById("perso").classList.add("visible");
         document.getElementById("score").innerHTML += score;
         document.getElementsByTagName("body")[0].classList.add("esplosione");
-        for (let check=0; check<100; check++) {
+        for (let check=0; check<caselle; check++) {
           if (bombeArr.includes(parseInt(cella[check].innerHTML))) {
             cella[check].classList.add("rosso");
           }
         }
-        console.log(this.innerHTML);
       }
       else {
         score++;
         this.classList.add("azzurro");
-        console.log(this.innerHTML);
+        if (score == maxScore) {
+          document.getElementById("gameover").classList.add("block");
+          document.getElementById("gameover").classList.add("neon-vinto");
+          document.getElementById("vinto").classList.add("visible");
+        }
       }
     });
   }

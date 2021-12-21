@@ -23,7 +23,7 @@
 
   <main>
     <div id="gameover">
-      <div id="riprova">
+      <div id="perso" class="banner">
         <img src="gameover.png" alt="Game Over">
         <div>
           Game Over!
@@ -31,7 +31,17 @@
         </div>
         <button onclick="ricarica()">Riprova</button>
       </div>
+
+      <div id="vinto" class="banner">
+        <img src="win.png" alt="Vittoria!">
+        <div>
+          Hai vinto!!!
+          <div>Hai totalizzato il punteggio massimo!</div>
+        </div>
+        <button onclick="ricarica()">Gioca ancora!</button>
+      </div>
     </div>
+
     <div id="select">Seleziona una difficoltà!</div>
     <div id="griglia"></div>
   </main>

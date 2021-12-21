@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: default;
+}
+
+html {
+  box-shadow: inset 0 -100px 100px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  min-height: 100vh;
+  background-color: #333;
+  font-family: 'Courier New', Courier, monospace;
+  color: #fff;
+  text-shadow: 0 1px 0 #000;
+}
+
+::selection {
+  background-color: transparent;
+}
+
+header {
+  background: rgb(66,66,66);
+  background: linear-gradient(90deg, rgba(66,66,66,1) 0%, rgba(83,83,83,1) 50%, rgba(66,66,66,1) 100%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 50px 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.7rem;
+  font-weight: bold;
+  animation: entrata-header 1s ease-out both;
+}
+
+@keyframes entrata-header {
+  0% {
+    transform: translate(0, -300px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+#logo {
+  width: 100px;
+  animation: entrata-logo 0.5s ease-out both;
+  animation-delay: 1.1s;
+}
+
+@keyframes entrata-logo {
+  0% {
+    transform: rotate(-540deg) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+}
+
+#title {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;  
+  gap: 30px;
+  font-size: 3rem;
+  letter-spacing: 5px;
+}
+
+#credits {
+  margin: 50px auto;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+#select {
+  margin: 150px auto;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 30px;
+  background-color: #666666;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  padding: 10px 15px;
+  font-size: 1.5rem;
+  font-family: 'Courier New', Courier, monospace;
+  color: #fff;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #858585;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
+}
+
+button:active {
+  background-color: #5c5c5c;
+  box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Griglia */
+#griglia {
+  margin: 100px auto;
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.animazione {
+  animation: comparsa-griglia 1.5s;
+}
+
+@keyframes comparsa-griglia {
+  0% {transform: scale(0);}
+  50% {transform: scale(1.1);}
+  100% {transform: scale(1);}
+}
+
+.facile, .medio, .difficile {
+  border: 2px solid #fff;
+  width: 750px;
+  height: 750px;
+}
+
+.cella {
+  margin: 0px 0;
+  border: 2px solid #fff;
+  background-color: #333;
+  transition: background-color 0.3s;
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.facile .cella {
+  height: calc(100% / 10);
+  width: calc(100% / 10);
+}
+
+.medio .cella {
+  height: calc(100% / 9);
+  width: calc(100% / 9);
+}
+
+.difficile .cella {
+  height: calc(100% / 7);
+  width: calc(100% / 7);
+}
+
+.cella:hover {
+  background-color: #3d3d3d;
+  cursor: pointer;
+}
+
+.azzurro {
+  background-color: #5c67ff;
+}
+
+.azzurro:hover {
+  background-color: #737dff;
+}

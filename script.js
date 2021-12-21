@@ -102,7 +102,11 @@ function clickCella() {
   for (i=0; i<cella.length; i++) {
     cella[i].addEventListener("click", function(){
       if (bombeArr.includes(parseInt(this.innerHTML))) {
-        this.classList.add("rosso");
+        for (check=0; check<101; check++) {
+          if (bombeArr.includes(parseInt(cella[check].innerHTML))) {
+            cella[check].classList.add("rosso");
+          }
+        }
         console.log(this.innerHTML);
       }
       else {

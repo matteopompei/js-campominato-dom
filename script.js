@@ -37,7 +37,7 @@ function diffFacile() {
   griglia.classList.remove("animazione", "medio", "difficile");
   griglia.classList.add("animazione", "facile");
 
-  for (i=1; i<caselleFacile+1; i++) {
+  for (let i=1; i<caselleFacile+1; i++) {
     griglia.innerHTML += `<div class="cella">${i}</div>`;
   }
   
@@ -59,7 +59,7 @@ function diffMedio() {
   griglia.innerHTML = "";
   griglia.classList.remove("animazione", "facile", "difficile");
   griglia.classList.add("animazione", "medio");
-  for (i=1; i<82; i++) {
+  for (let i=1; i<82; i++) {
     griglia.innerHTML += `<div class="cella">${i}</div>`;
   }
 
@@ -81,7 +81,7 @@ function diffDifficile() {
   griglia.innerHTML = "";
   griglia.classList.remove("animazione", "facile", "medio");
   griglia.classList.add("animazione", "difficile");
-  for (i=1; i<50; i++) {
+  for (let i=1; i<50; i++) {
     griglia.innerHTML += `<div class="cella">${i}</div>`;
   }
 
@@ -99,10 +99,10 @@ function diffDifficile() {
 
 // Click sulla cella
 function clickCella() {
-  for (i=0; i<cella.length; i++) {
+  for (let i=0; i<cella.length; i++) {
     cella[i].addEventListener("click", function(){
       if (bombeArr.includes(parseInt(this.innerHTML))) {
-        for (check=0; check<101; check++) {
+        for (let check=0; check<100; check++) {
           if (bombeArr.includes(parseInt(cella[check].innerHTML))) {
             cella[check].classList.add("rosso");
           }
@@ -120,7 +120,7 @@ function clickCella() {
 // Controlla doppione
 function controlloDoppione() {
   let doppione = false;
-  for (i=0; i<bombeArr.length; i++) {
+  for (let i=0; i<bombeArr.length; i++) {
     if (bomba == bombeArr[i]) {
       doppione = true;
     }

@@ -214,6 +214,11 @@ button:active {
   font-weight: bold;
 }
 
+.esplosione {
+  background-image: url("esplosione.gif");
+  background-size: cover;
+}
+
 /* Punteggio */
 #riprova > div > div {
   font-size: 2rem;

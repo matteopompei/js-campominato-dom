@@ -105,6 +105,7 @@ function clickCella() {
       if (bombeArr.includes(parseInt(this.innerHTML))) {
         document.getElementById("gameover").classList.add("neon-gameover");
         document.getElementById("score").innerHTML += score;
+        document.getElementsByTagName("body")[0].classList.add("esplosione");
         for (let check=0; check<100; check++) {
           if (bombeArr.includes(parseInt(cella[check].innerHTML))) {
             cella[check].classList.add("rosso");

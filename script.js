@@ -130,3 +130,8 @@ function controlloDoppione() {
     bombeArr.push(bomba);
   }
 }
+
+// Ricarica pagina quando perdi
+function ricarica() {
+  location.reload();
+}

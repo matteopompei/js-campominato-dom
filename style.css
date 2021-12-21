@@ -192,9 +192,24 @@ button:active {
   left: 0;
   width: 100vw;
   height: calc(100vh - 200px);
-  box-shadow: inset 0 -100px 100px rgba(255, 0, 0, 0.7);
+  box-shadow: inset 0 0 150px rgba(255, 0, 0, 1);
+  z-index: 9999;
 }
 
 .neon-gameover {
   display: block !important;
+}
+
+#riprova {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #ff0000;
+  padding: 50px 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 3.5rem;
+  font-weight: bold;
 }

@@ -130,7 +130,6 @@ function clickCella() {
           document.getElementById("vinto").classList.add("visible");
           document.getElementsByTagName("body")[0].classList.add("disinnesco");
           document.getElementsByTagName("header")[0].classList.add("header-hidden");
-          document.querySelectorAll(".celle").classList.add("celle-trasp");
         }
       }
     });

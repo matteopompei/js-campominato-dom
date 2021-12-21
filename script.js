@@ -17,7 +17,11 @@
 const griglia = document.getElementById("griglia");
 let cella = document.getElementsByClassName("cella");
 const diffSet = document.getElementById("select");
-
+let bombeArr = [];
+let bomba = 0;
+const caselleFacile = 100;
+const caselleMedio = 81;
+const caselleDifficile = 49;
 
 // Selezioni difficoltà
 document.getElementById("facile").addEventListener("click", diffFacile);
@@ -30,10 +34,18 @@ function diffFacile() {
   griglia.innerHTML = "";
   griglia.classList.remove("animazione", "medio", "difficile");
   griglia.classList.add("animazione", "facile");
-  for (i=1; i<101; i++) {
+  for (i=1; i<caselleFacile+1; i++) {
     griglia.innerHTML += `<div class="cella">${i}</div>`;
   }
   cellaAzzurra();
+
+  // Genera bombe difficoltà facile
+  bombeArr = [];
+  while (bombeArr.length < 16) {
+    bomba = Math.floor((Math.random() * caselleFacile) + 1);
+    controlloDoppione()
+  }
+  console.log(bombeArr);
 }
 
 function diffMedio() {
@@ -45,6 +57,14 @@ function diffMedio() {
     griglia.innerHTML += `<div class="cella">${i}</div>`;
   }
   cellaAzzurra();
+
+  // Genera bombe difficoltà media
+  bombeArr = [];
+  while (bombeArr.length < 16) {
+    bomba = Math.floor((Math.random() * caselleMedio) + 1);
+    controlloDoppione()
+  }
+  console.log(bombeArr);
 }
 
 function diffDifficile() {
@@ -56,6 +76,14 @@ function diffDifficile() {
     griglia.innerHTML += `<div class="cella">${i}</div>`;
   }
   cellaAzzurra();
+
+  // Genera bombe difficoltà difficile
+  bombeArr = [];
+  while (bombeArr.length < 16) {
+    bomba = Math.floor((Math.random() * caselleDifficile) + 1);
+    controlloDoppione()
+  }
+  console.log(bombeArr);
 }
 
 // Click sulla cella
@@ -64,5 +92,18 @@ function cellaAzzurra() {
     cella[i].addEventListener("click", function(){
       this.classList.add("azzurro");
     });
+  }
+}
+
+// Controlla doppione
+function controlloDoppione() {
+  let doppione = false;
+  for (i=0; i<bombeArr.length; i++) {
+    if (bomba == bombeArr[i]) {
+      doppione = true;
+    }
+  }
+  if (doppione == false) {
+    bombeArr.push(bomba);
   }
 }
